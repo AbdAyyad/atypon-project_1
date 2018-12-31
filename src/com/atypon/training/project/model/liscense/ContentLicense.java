@@ -1,4 +1,4 @@
-package com.atypon.training.project.model.liscene;
+package com.atypon.training.project.model.liscense;
 
 import com.atypon.training.project.model.content.BaseContent;
 

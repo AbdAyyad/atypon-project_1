@@ -1,10 +1,12 @@
 package com.atypon.training.project.model.content;
 
+import com.atypon.training.project.model.Identifiable;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
-public class Journal implements Serializable, Comparable {
+public class Journal implements Serializable, Comparable, Identifiable {
     private int journalId;
     private String journalName;
     private Date timeStamp;
@@ -29,6 +31,10 @@ public class Journal implements Serializable, Comparable {
 
     public Date getTimeStamp() {
         return timeStamp;
+    }
+
+    public int getId(){
+        return getJournalId();
     }
 
     @Override
