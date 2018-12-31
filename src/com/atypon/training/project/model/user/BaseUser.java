@@ -1,23 +1,25 @@
 package com.atypon.training.project.model.user;
 
+import com.atypon.training.project.model.Identifiable;
+
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
-public abstract class BaseUser implements Comparable, Serializable {
+public abstract class BaseUser implements Comparable, Serializable, Identifiable {
     private int userId;
     private String userName;
     private String password;
-    private Date timeStamp;
+    private LocalDate timeStamp;
 
-    public BaseUser(int userId, String userName, String password, Date timeStamp) {
+    public BaseUser(int userId, String userName, String password, LocalDate timeStamp) {
         this.userId = userId;
         this.userName = userName;
         this.password = password;
         this.timeStamp = timeStamp;
     }
 
-    public Date getTimeStamp() {
+    public LocalDate getTimeStamp() {
         return timeStamp;
     }
 
@@ -39,6 +41,10 @@ public abstract class BaseUser implements Comparable, Serializable {
 
     public int getUserId() {
         return userId;
+    }
+
+    public int getId() {
+        return getUserId();
     }
 
     public boolean authenticate(BaseUser user) {

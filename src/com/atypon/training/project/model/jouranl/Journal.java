@@ -1,17 +1,17 @@
-package com.atypon.training.project.model.content;
+package com.atypon.training.project.model.jouranl;
 
 import com.atypon.training.project.model.Identifiable;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Journal implements Serializable, Comparable, Identifiable {
     private int journalId;
     private String journalName;
-    private Date timeStamp;
+    private LocalDate timeStamp;
 
-    public Journal(int journalId, String journalName, Date timeStamp) {
+    public Journal(int journalId, String journalName, LocalDate timeStamp) {
         this.journalId = journalId;
         this.journalName = journalName;
         this.timeStamp = timeStamp;
@@ -29,7 +29,7 @@ public class Journal implements Serializable, Comparable, Identifiable {
         return journalId;
     }
 
-    public Date getTimeStamp() {
+    public LocalDate getTimeStamp() {
         return timeStamp;
     }
 

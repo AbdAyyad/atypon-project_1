@@ -3,15 +3,15 @@ package com.atypon.training.project.model.liscense;
 import com.atypon.training.project.model.content.BaseContent;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 import java.util.Set;
 import java.util.HashSet;
 
-public class ContentLiscene extends BaseLicense implements Serializable, Comparable {
+public class ContentLicense extends BaseLicense implements Serializable, Comparable {
     private Set<Integer> contentIdSet;
 
-    public ContentLiscene(int licenseId, Date timeStamp, Set<Integer> contentIdSet) {
+    public ContentLicense(int licenseId, LocalDate timeStamp, Set<Integer> contentIdSet) {
         super(licenseId, timeStamp);
         this.contentIdSet = contentIdSet;
     }
@@ -27,8 +27,8 @@ public class ContentLiscene extends BaseLicense implements Serializable, Compara
 
     @Override
     public int compareTo(Object o) {
-        ContentLiscene contentLiscene = (ContentLiscene) o;
-        return Integer.compare(getLicenseId(), contentLiscene.getLicenseId());
+        ContentLicense contentLicense = (ContentLicense) o;
+        return Integer.compare(getLicenseId(), contentLicense.getLicenseId());
     }
 
     @Override
@@ -36,7 +36,7 @@ public class ContentLiscene extends BaseLicense implements Serializable, Compara
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
-        ContentLiscene that = (ContentLiscene) o;
+        ContentLicense that = (ContentLicense) o;
         return contentIdSet.equals(that.contentIdSet);
     }
 

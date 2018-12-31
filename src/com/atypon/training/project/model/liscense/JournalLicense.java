@@ -1,15 +1,15 @@
-package com.atypon.training.project.model.liscene;
+package com.atypon.training.project.model.liscense;
 
 import com.atypon.training.project.model.content.BaseContent;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class JournalLicense extends BaseLicense implements Serializable, Comparable {
     private int journalId;
 
-    public JournalLicense(int licenseId, Date timeStamp, int journalId) {
+    public JournalLicense(int licenseId, LocalDate timeStamp, int journalId) {
         super(licenseId, timeStamp);
         this.journalId = journalId;
     }

@@ -1,13 +1,13 @@
 package com.atypon.training.project.model.user;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Admin extends BaseUser implements Serializable,Comparable {
     private AdminPrivilege privilege;
 
-    public Admin(int userId, String userName, String password, Date timeStamp, AdminPrivilege privilege) {
+    public Admin(int userId, String userName, String password, LocalDate timeStamp, AdminPrivilege privilege) {
         super(userId, userName, password, timeStamp);
         this.privilege = privilege;
     }

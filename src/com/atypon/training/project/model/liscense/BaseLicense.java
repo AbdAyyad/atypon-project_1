@@ -1,17 +1,18 @@
-package com.atypon.training.project.model.liscene;
+package com.atypon.training.project.model.liscense;
 
 import com.atypon.training.project.model.Identifiable;
 import com.atypon.training.project.model.content.BaseContent;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
 public abstract class BaseLicense implements Serializable, Comparable, Identifiable {
     private int licenseId;
-    private Date timeStamp;
+    private LocalDate timeStamp;
 
-    public BaseLicense(int licenseId, Date timeStamp) {
+    public BaseLicense(int licenseId, LocalDate timeStamp) {
         this.licenseId = licenseId;
         this.timeStamp = timeStamp;
     }
@@ -24,7 +25,7 @@ public abstract class BaseLicense implements Serializable, Comparable, Identifia
         this.licenseId = licenseId;
     }
 
-    public Date getTimeStamp() {
+    public LocalDate getTimeStamp() {
         return timeStamp;
     }
 

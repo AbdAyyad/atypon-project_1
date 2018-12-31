@@ -1,4 +1,4 @@
-package com.atypon.training.project.controller;
+package com.atypon.training.project.controller.cache;
 
 import com.atypon.training.project.model.Identifiable;
 

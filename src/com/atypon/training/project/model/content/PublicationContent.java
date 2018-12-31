@@ -1,14 +1,14 @@
 package com.atypon.training.project.model.content;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class PublicationContent extends BaseContent implements Serializable, Comparable {
     private String title;
     private String body;
 
-    public PublicationContent(int contentId, Date timeStamp, int journalId, int authorId, String title, String body) {
+    public PublicationContent(int contentId, LocalDate timeStamp, int journalId, int authorId, String title, String body) {
         super(contentId, timeStamp, journalId, authorId);
         this.title = title;
         this.body = body;
@@ -28,6 +28,10 @@ public class PublicationContent extends BaseContent implements Serializable, Com
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    public int getId(){
+        return getContentId();
     }
 
     @Override

@@ -1,30 +1,30 @@
-package com.atypon.training.project.model.liscene;
+package com.atypon.training.project.model.liscense;
 
 import com.atypon.training.project.model.content.BaseContent;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class DateLicense extends BaseLicense implements Serializable,Comparable {
-    private Date endDate;
+    private LocalDate endDate;
 
-    public DateLicense(int licenseId, Date timeStamp, Date endDate) {
+    public DateLicense(int licenseId, LocalDate timeStamp, LocalDate endDate) {
         super(licenseId, timeStamp);
         this.endDate = endDate;
     }
 
-    public Date getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
     @Override
     public boolean canAccessContent(BaseContent content) {
-        Date date = new Date();
+        LocalDate date = LocalDate.now();
         return date.compareTo(getEndDate()) < 1;
     }
 

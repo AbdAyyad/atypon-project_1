@@ -1,14 +1,14 @@
 package com.atypon.training.project.model.user;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class User extends BaseUser implements Serializable, Comparable {
     private int licenceId;
     private UserPrivilege privilege;
 
-    public User(int userId, String userName, String password, Date timeStamp, int licenceId, UserPrivilege privilege) {
+    public User(int userId, String userName, String password, LocalDate timeStamp, int licenceId, UserPrivilege privilege) {
         super(userId, userName, password, timeStamp);
         this.licenceId = licenceId;
         this.privilege = privilege;

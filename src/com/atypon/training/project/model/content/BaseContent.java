@@ -1,16 +1,19 @@
 package com.atypon.training.project.model.content;
 
+import com.atypon.training.project.model.Identifiable;
+
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
-public abstract class BaseContent implements Comparable, Serializable {
+public abstract class BaseContent implements Comparable, Serializable, Identifiable {
     private int contentId;
-    private Date timeStamp;
+    private LocalDate timeStamp;
     private int journalId;
     private int authorId;
 
-    public BaseContent(int contentId, Date timeStamp, int journalId, int authorId) {
+    public BaseContent(int contentId, LocalDate timeStamp, int journalId, int authorId) {
         this.contentId = contentId;
         this.timeStamp = timeStamp;
         this.journalId = journalId;
@@ -33,7 +36,7 @@ public abstract class BaseContent implements Comparable, Serializable {
         return contentId;
     }
 
-    public Date getTimeStamp() {
+    public LocalDate getTimeStamp() {
         return timeStamp;
     }
 
