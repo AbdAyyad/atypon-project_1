@@ -1,12 +1,13 @@
 package com.atypon.training.project.model.liscene;
 
+import com.atypon.training.project.model.Identifiable;
 import com.atypon.training.project.model.content.BaseContent;
 
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
-public abstract class BaseLicense implements Serializable, Comparable {
+public abstract class BaseLicense implements Serializable, Comparable, Identifiable {
     private int licenseId;
     private Date timeStamp;
 
@@ -28,6 +29,10 @@ public abstract class BaseLicense implements Serializable, Comparable {
     }
 
     public abstract boolean canAccessContent(BaseContent content);
+
+    public int getId(){
+        return getLicenseId();
+    }
 
     @Override
     public boolean equals(Object o) {
