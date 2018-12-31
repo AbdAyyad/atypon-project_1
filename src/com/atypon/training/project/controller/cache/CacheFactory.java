@@ -13,23 +13,23 @@ public class CacheFactory {
     private CacheFactory() {
     }
 
-    public synchronized static Cache<BaseContent> getContentCacheInstance() {
+    public synchronized static Cache<BaseContent> getContentCacheInstance(String folder) {
         if (contentCache == null) {
-            contentCache = new Cache<>(Constants.CACHE_SIZE);
+            contentCache = new Cache<>(Constants.CACHE_SIZE,folder);
         }
         return contentCache;
     }
 
-    public synchronized static Cache<BaseUser> getUserCacheInstance() {
+    public synchronized static Cache<BaseUser> getUserCacheInstance(String folder) {
         if (userCache == null) {
-            userCache = new Cache<>(Constants.CACHE_SIZE);
+            userCache = new Cache<>(Constants.CACHE_SIZE,folder);
         }
         return userCache;
     }
 
-    public synchronized static Cache<BaseLicense> getLicenseCacheInstance() {
+    public synchronized static Cache<BaseLicense> getLicenseCacheInstance(String folder) {
         if (licenseCache == null) {
-            licenseCache = new Cache<>(Constants.CACHE_SIZE);
+            licenseCache = new Cache<>(Constants.CACHE_SIZE,folder);
         }
         return licenseCache;
     }

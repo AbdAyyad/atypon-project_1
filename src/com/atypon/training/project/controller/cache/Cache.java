@@ -1,6 +1,7 @@
 package com.atypon.training.project.controller.cache;
 
 import com.atypon.training.project.model.Identifiable;
+import com.atypon.training.project.model.content.BaseContent;
 
 import java.util.*;
 
@@ -9,12 +10,14 @@ public class Cache<T extends Identifiable> {
     private Queue<Integer> identities;
     private int maxNumberOfElements;
     private DiskStorage diskStorage;
+    private String folder;
 
-    protected Cache(int maxNumberOfElements) {
+    protected Cache(int maxNumberOfElements, String folder) {
         this.maxNumberOfElements = maxNumberOfElements;
         data = new HashMap<>();
         identities = new LinkedList<>();
         diskStorage = DiskStorage.getInstance();
+        this.folder = folder;
     }
 
 
@@ -27,7 +30,7 @@ public class Cache<T extends Identifiable> {
 
     private void removeFromCache() {
         int id = identities.poll();
-        diskStorage.write(data.get(id));
+        diskStorage.write(folder, data.get(id));
         data.remove(id);
     }
 
@@ -40,7 +43,8 @@ public class Cache<T extends Identifiable> {
         if (data.containsKey(id)) {
             return data.get(id);
         }
-        T element = (T) diskStorage.read(id);
+
+        T element = (T) diskStorage.read(folder, id);
         add(element);
         return element;
     }

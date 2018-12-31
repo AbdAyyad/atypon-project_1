@@ -47,10 +47,10 @@ public class DiskStorage {
 
     }
 
-    public void write(Identifiable object) {
+    public void write(String folder, Identifiable object) {
     }
 
-    public Identifiable read(int id) {
+    public Identifiable read(String folder, int id) {
         return null;
     }
 
