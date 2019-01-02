@@ -11,6 +11,11 @@ import com.atypon.training.project.model.user.User;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 public class DiskStorage {
     private static DiskStorage ourInstance = new DiskStorage();
     private XStream xStream;
@@ -47,15 +52,38 @@ public class DiskStorage {
 
     }
 
-    public void write(String folder, Identifiable object) {
+    private String getFileName(int id) {
+        StringBuilder fileName = new StringBuilder();
+        fileName.append(id);
+        fileName.append(".xml");
+        return fileName.toString();
+    }
+
+    public void write(String folder, Identifiable object) throws IOException {
+        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        int id = 0;
+        Path file = Paths.get(folder, getFileName(id));
+        Files.write(file, xStream.toXML(object).getBytes());
+
     }
 
     public Identifiable read(String folder, int id) {
-        return null;
+        File file = Paths.get(folder, getFileName(id)).toFile();
+        return (Identifiable) xStream.fromXML(file);
     }
 
-    public void delete(int id) {
+    public void delete(String folder, int id) throws IOException {
+        Path file = Paths.get(folder, getFileName(id));
+        Files.delete(file);
+    }
 
+    public boolean contains(String folder, int id) {
+        String fileName = String.valueOf(id) + ".xml";
+        Path file = Paths.get(folder, fileName);
+        return Files.exists(file);
     }
 
     /**

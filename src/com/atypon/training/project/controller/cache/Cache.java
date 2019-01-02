@@ -1,7 +1,6 @@
 package com.atypon.training.project.controller.cache;
 
 import com.atypon.training.project.model.Identifiable;
-import com.atypon.training.project.model.content.BaseContent;
 
 import java.util.*;
 
@@ -58,6 +57,13 @@ public class Cache<T extends Identifiable> {
             data.remove(id);
             identities.remove(id);
         }
-        diskStorage.delete(id);
+        diskStorage.delete(folder, id);
+    }
+
+    public boolean contains(int id) {
+        if (data.containsKey(id)) {
+            return true;
+        }
+        return diskStorage.contains(folder, id);
     }
 }
