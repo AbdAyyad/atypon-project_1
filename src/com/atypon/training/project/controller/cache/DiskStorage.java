@@ -59,15 +59,16 @@ public class DiskStorage {
         return fileName.toString();
     }
 
-    public void write(String folder, Identifiable object) throws IOException {
-        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        int id = 0;
-        Path file = Paths.get(folder, getFileName(id));
-        Files.write(file, xStream.toXML(object).getBytes());
+    public void write(String folder, Identifiable object) {
+        try {
+            writeWithException(folder, object);
+        } catch (IOException e) {
+        }
+    }
 
+    private void writeWithException(String folder, Identifiable object) throws IOException {
+        Path file = Paths.get(folder, getFileName(object.getId()));
+        Files.write(file, xStream.toXML(object).getBytes());
     }
 
     public Identifiable read(String folder, int id) {
@@ -75,7 +76,14 @@ public class DiskStorage {
         return (Identifiable) xStream.fromXML(file);
     }
 
-    public void delete(String folder, int id) throws IOException {
+    public void delete(String folder, int id) {
+        try {
+            deleteWithException(folder, id);
+        } catch (IOException e) {
+        }
+    }
+
+    private void deleteWithException(String folder, int id) throws IOException {
         Path file = Paths.get(folder, getFileName(id));
         Files.delete(file);
     }
