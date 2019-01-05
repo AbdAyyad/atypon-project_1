@@ -1,6 +1,6 @@
 package com.atypon.training.project.server.view;
 
-import com.atypon.training.project.Constants;
+import com.atypon.training.project.common.Constants;
 import com.atypon.training.project.server.controller.ServerWorker;
 
 import java.io.IOException;

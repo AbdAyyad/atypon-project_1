@@ -9,16 +9,15 @@ public final class Response {
         this.status = status;
     }
 
-    public Response(){
-        this.body = "Error reading request";
-        this.status = ResponseStatus.ServerError;
-    }
-
     public String getBody() {
         return body;
     }
 
     public ResponseStatus getStatus() {
         return status;
+    }
+
+    public static Response serverErrorResponse() {
+        return new Response("Error reading request", ResponseStatus.ServerError);
     }
 }

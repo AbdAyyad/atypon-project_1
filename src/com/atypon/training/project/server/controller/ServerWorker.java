@@ -11,10 +11,12 @@ public class ServerWorker implements Runnable {
     private Socket socket;
     private ObjectInputStream in;
     private ObjectOutputStream out;
+    private ServerFacade facade;
 
 
     public ServerWorker(Socket socket) {
         initializeConnection(socket);
+        facade = new ServerFacade();
     }
 
     private void initializeConnection(Socket socket) {
@@ -33,11 +35,69 @@ public class ServerWorker implements Runnable {
     @Override
     public void run() {
         Request request = readRequest();
-        Response response = null;
+        Response response;
+
         if (request == null) {
-            response = new Response();
+            response = Response.serverErrorResponse();
         } else {
-switch (request.getOperation()){}
+            switch (request.getOperation()) {
+                case LoginUser:
+                    response = facade.loginUser(request.getParams());
+                    break;
+                case GetUser:
+                    response = facade.getUser(request.getParams());
+                    break;
+                case CreateUser:
+                    response = facade.createUser(request.getParams());
+                    break;
+                case UpdateUserLicense:
+                    response = facade.updateUserLicense(request.getParams());
+                    break;
+                case DeleteUser:
+                    response = facade.deleteUser(request.getParams());
+                    break;
+
+                case GetJournal:
+                    response = facade.getJournal(request.getParams());
+                    break;
+                case CreateJournal:
+                    response = facade.createJournal(request.getParams());
+                    break;
+                case UpdateJournal:
+                    response = facade.updateJournal(request.getParams());
+                    break;
+                case DeleteJournal:
+                    response = facade.deleteJournal(request.getParams());
+                    break;
+
+                case GetContent:
+                    response = facade.getContent(request.getParams());
+                    break;
+                case CreateContent:
+                    response = facade.createContent(request.getParams());
+                    break;
+                case UpdateContent:
+                    response = facade.updateContent(request.getParams());
+                    break;
+                case DeleteContent:
+                    response = facade.deleteContent(request.getParams());
+                    break;
+
+                case GetLicense:
+                    response = facade.getLicense(request.getParams());
+                    break;
+                case CreateLicense:
+                    response = facade.createLicense(request.getParams());
+                    break;
+                case UpdateLicense:
+                    response = facade.updateLicense(request.getParams());
+                    break;
+                case DeleteLicense:
+                    response = facade.deleteLicense(request.getParams());
+                    break;
+                default:
+                    response = Response.serverErrorResponse();
+            }
         }
         sendResponse(response);
         closeConnection();

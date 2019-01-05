@@ -1,6 +1,6 @@
 package com.atypon.training.project.server.controller.database;
 
-import com.atypon.training.project.Constants;
+import com.atypon.training.project.common.Constants;
 import com.atypon.training.project.server.model.content.BaseContent;
 import com.atypon.training.project.server.model.jouranl.Journal;
 import com.atypon.training.project.server.model.liscense.BaseLicense;
@@ -15,21 +15,21 @@ public class DataBaseFactory {
     private DataBaseFactory() {
     }
 
-    public synchronized static DataBase<BaseContent> getContentCacheInstance(String folder) {
+    public synchronized static DataBase<BaseContent> getContentDataBaseInstance(String folder) {
         if (contentDataBase == null) {
             contentDataBase = new DataBase<>(Constants.CACHE_SIZE, folder);
         }
         return contentDataBase;
     }
 
-    public synchronized static DataBase<BaseUser> getUserCacheInstance(String folder) {
+    public synchronized static DataBase<BaseUser> getUserDataBaseInstance(String folder) {
         if (userDataBase == null) {
             userDataBase = new DataBase<>(Constants.CACHE_SIZE, folder);
         }
         return userDataBase;
     }
 
-    public synchronized static DataBase<BaseLicense> getLicenseCacheInstance(String folder) {
+    public synchronized static DataBase<BaseLicense> getLicenseDataBaseInstance(String folder) {
         if (licenseDataBase == null) {
             licenseDataBase = new DataBase<>(Constants.CACHE_SIZE, folder);
         }
@@ -37,7 +37,7 @@ public class DataBaseFactory {
     }
 
 
-    public synchronized static DataBase<Journal> getJournalCacheInstance(String folder) {
+    public synchronized static DataBase<Journal> getJournalDataBaseInstance(String folder) {
         if (journalDataBase == null) {
             journalDataBase = new DataBase<>(Constants.CACHE_SIZE, folder);
         }
