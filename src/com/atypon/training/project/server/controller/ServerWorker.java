@@ -50,8 +50,8 @@ public class ServerWorker implements Runnable {
                 case CreateUser:
                     response = facade.createUser(request.getParams());
                     break;
-                case UpdateUserLicense:
-                    response = facade.updateUserLicense(request.getParams());
+                case UpdateUser:
+                    response = facade.updateUser(request.getParams());
                     break;
                 case DeleteUser:
                     response = facade.deleteUser(request.getParams());

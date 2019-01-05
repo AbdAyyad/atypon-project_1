@@ -8,9 +8,7 @@ import com.atypon.training.project.server.controller.database.DataBaseFactory;
 import com.atypon.training.project.server.model.content.BaseContent;
 import com.atypon.training.project.server.model.jouranl.Journal;
 import com.atypon.training.project.server.model.liscense.BaseLicense;
-import com.atypon.training.project.server.model.user.BaseUser;
-import com.atypon.training.project.server.model.user.User;
-import com.atypon.training.project.server.model.user.UserPrivilege;
+import com.atypon.training.project.server.model.user.*;
 
 import java.time.LocalDate;
 import java.util.Map;
@@ -63,8 +61,15 @@ public class ServerFacade {
     }
 
     public Response createUser(Map<String, String> params) {
-
-        return null;
+        int choice = Integer.parseInt(params.get("choice"));
+        BaseUser user;
+        if (choice == 0) {
+            user = createNormalUser(params);
+        } else {
+            user = createAdmin(params);
+        }
+        usersDataBase.add(user);
+        return new Response("user/admin created successfully", ResponseStatus.Success);
     }
 
     private User createNormalUser(Map<String, String> params) {
@@ -73,13 +78,20 @@ public class ServerFacade {
         String password = params.get("password");
         LocalDate timeStamp = LocalDate.now();
         int userPrivilege = Integer.parseInt(params.get("userPrivilege"));
-//        User user = new User(userId, userName, password, timeStamp, 0, (UserPrivilege) userPrivilege);
-//        return user;
-        return null;
+        return new User(userId, userName, password, timeStamp, 0, UserPrivilege.getPrivilege(userPrivilege));
+    }
+
+    private Admin createAdmin(Map<String, String> params) {
+        int userId = identities.createUserIdentity();
+        String userName = params.get("userName");
+        String password = params.get("password");
+        LocalDate timeStamp = LocalDate.now();
+        int adminPrivilege = Integer.parseInt(params.get("adminPrivilege"));
+        return new Admin(userId, userName, password, timeStamp, AdminPrivilege.getPrivilege(adminPrivilege));
     }
 
 
-    public Response updateUserLicense(Map<String, String> params) {
+    public Response updateUser(Map<String, String> params) {
         return null;
     }
 
