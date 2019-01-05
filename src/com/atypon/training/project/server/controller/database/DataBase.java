@@ -49,7 +49,11 @@ public class DataBase<T extends Identifiable> {
     }
 
     public void update(T element) {
-        data.put(element.getId(), element);
+        if (data.containsKey(element.getId())) {
+            data.put(element.getId(), element);
+        } else {
+            diskStorage.write(folder, element);
+        }
     }
 
     public void delete(int id) {
