@@ -1,10 +1,10 @@
 package com.atypon.training;
 
-import com.atypon.training.project.controller.cache.DiskStorage;
-import com.atypon.training.project.model.liscense.BaseLicense;
-import com.atypon.training.project.model.liscense.ContentLicense;
-import com.atypon.training.project.model.liscense.DateLicense;
-import com.atypon.training.project.model.liscense.JournalLicense;
+import com.atypon.training.project.server.controller.database.DiskStorage;
+import com.atypon.training.project.server.model.liscense.BaseLicense;
+import com.atypon.training.project.server.model.liscense.ContentLicense;
+import com.atypon.training.project.server.model.liscense.DateLicense;
+import com.atypon.training.project.server.model.liscense.JournalLicense;
 
 import java.time.LocalDate;
 import java.util.HashSet;
