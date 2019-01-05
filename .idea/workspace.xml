@@ -2,23 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef7fb5a6-7a13-49a2-8eba-b857cb244827" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/com/atypon/training/project/server/controller/Identities.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/atypon-project_1/com/atypon/training/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/atypon-project_1/com/atypon/training/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/atypon-project_1/com/atypon/training/project/server/controller/ServerWorker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/atypon-project_1/com/atypon/training/project/server/controller/ServerWorker.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/atypon-project_1/com/atypon/training/project/server/controller/cache/DataBase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/atypon-project_1/com/atypon/training/project/server/controller/cache/DataBaseFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/atypon-project_1/com/atypon/training/project/server/controller/cache/DiskStorage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/atypon-project_1/com/atypon/training/project/server/view/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/atypon-project_1/com/atypon/training/project/server/view/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/atypon-project_1/DiskStorageTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/atypon-project_1/DiskStorageTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/atypon/training/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/atypon/training/project/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/atypon/training/project/common/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/atypon/training/project/common/Operation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/atypon/training/project/common/Operation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/atypon/training/project/common/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/atypon/training/project/common/Response.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/atypon/training/project/common/ResponseStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/atypon/training/project/common/ResponseStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/atypon-project_1/com/atypon/training/project/server/controller/ServerFacade.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/atypon-project_1/com/atypon/training/project/server/model/user/BaseUser.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/atypon/training/project/server/controller/ServerFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/atypon/training/project/server/controller/ServerFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/atypon/training/project/server/controller/ServerWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/atypon/training/project/server/controller/ServerWorker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/atypon/training/project/server/controller/database/DataBaseFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/atypon/training/project/server/controller/database/DataBaseFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/atypon/training/project/server/view/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/atypon/training/project/server/view/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/atypon/training/project/server/model/user/BaseUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/atypon/training/project/server/model/user/BaseUser.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,26 +19,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/atypon/training/project/server/controller/database/DiskStorage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-298">
-              <caret line="25" column="9" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#initializeXStream#0;class#DiskStorage#0" />
-                <element signature="method#mapLicenseToXStream#0;class#DiskStorage#0" />
-                <element signature="method#mapUserToXStream#0;class#DiskStorage#0" />
-                <element signature="method#mapContentToXStream#0;class#DiskStorage#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/atypon/training/project/server/controller/ServerWorker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-493">
-              <caret line="37" column="25" lean-forward="true" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
+            <state relative-caret-position="34">
+              <caret line="57" column="26" selection-start-line="57" selection-start-column="26" selection-end-line="57" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -60,43 +33,40 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/atypon/training/project/server/controller/ServerFacade.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="23" column="33" lean-forward="true" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
+            <state relative-caret-position="586">
+              <caret line="75" column="85" selection-start-line="75" selection-start-column="85" selection-end-line="75" selection-end-column="85" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1387#1388#0" expanded="true" />
-                <element signature="e#1414#1415#0" expanded="true" />
-                <element signature="e#1842#1843#0" expanded="true" />
-                <element signature="e#1869#1870#0" expanded="true" />
-                <element signature="e#1934#1935#0" expanded="true" />
-                <element signature="e#1961#1962#0" expanded="true" />
-                <element signature="e#2027#2028#0" expanded="true" />
-                <element signature="e#2054#2055#0" expanded="true" />
-                <element signature="e#2212#2213#0" expanded="true" />
-                <element signature="e#2239#2240#0" expanded="true" />
-                <element signature="e#2304#2305#0" expanded="true" />
-                <element signature="e#2331#2332#0" expanded="true" />
-                <element signature="e#2397#2398#0" expanded="true" />
-                <element signature="e#2424#2425#0" expanded="true" />
-                <element signature="e#2580#2581#0" expanded="true" />
-                <element signature="e#2607#2608#0" expanded="true" />
-                <element signature="e#2672#2673#0" expanded="true" />
-                <element signature="e#2699#2700#0" expanded="true" />
-                <element signature="e#2764#2765#0" expanded="true" />
-                <element signature="e#2791#2792#0" expanded="true" />
+                <element signature="e#1551#1552#0" expanded="true" />
+                <element signature="e#1608#1609#0" expanded="true" />
+                <element signature="e#2926#2927#0" expanded="true" />
+                <element signature="e#2953#2954#0" expanded="true" />
+                <element signature="e#3657#3658#0" expanded="true" />
+                <element signature="e#3684#3685#0" expanded="true" />
+                <element signature="e#3749#3750#0" expanded="true" />
+                <element signature="e#3776#3777#0" expanded="true" />
+                <element signature="e#4048#4049#0" expanded="true" />
+                <element signature="e#4075#4076#0" expanded="true" />
+                <element signature="e#4140#4141#0" expanded="true" />
+                <element signature="e#4167#4168#0" expanded="true" />
+                <element signature="e#4232#4233#0" expanded="true" />
+                <element signature="e#4259#4260#0" expanded="true" />
+                <element signature="e#4533#4534#0" expanded="true" />
+                <element signature="e#4560#4561#0" expanded="true" />
+                <element signature="e#4625#4626#0" expanded="true" />
+                <element signature="e#4652#4653#0" expanded="true" />
+                <element signature="e#4717#4718#0" expanded="true" />
+                <element signature="e#4744#4745#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/atypon/training/project/server/view/Main.java">
+        <entry file="file://$PROJECT_DIR$/src/com/atypon/training/project/server/controller/Identities.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="27" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="170">
+              <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -122,6 +92,20 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/atypon/training/project/server/model/user/BaseUser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="527">
+              <caret line="43" column="5" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1179#1180#0" expanded="true" />
+                <element signature="e#1228#1229#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/atypon/training/project/common/Operation.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -132,10 +116,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/atypon/training/project/server/model/user/UserPrivilege.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/atypon/training/project/common/Response.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="323">
-              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+              <caret line="23" selection-start-line="23" selection-end-line="23" />
             </state>
           </provider>
         </entry>
@@ -149,15 +142,6 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/atypon/training/project/server/model/user/AdminPrivilege.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="38" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -165,8 +149,8 @@
       <list>
         <option value="Interface" />
         <option value="Singleton" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -176,11 +160,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/atypon/training/project/model/BaseUser.java" />
-        <option value="$PROJECT_DIR$/src/com/atypon/training/project/model/User.java" />
-        <option value="$PROJECT_DIR$/src/com/atypon/training/project/model/Admin.java" />
-        <option value="$PROJECT_DIR$/src/com/atypon/training/project/model/uses/Admin.java" />
-        <option value="$PROJECT_DIR$/src/com/atypon/training/project/model/user/UserPrivilege.java" />
         <option value="$PROJECT_DIR$/src/com/atypon/training/project/model/user/AdminPrivilege.java" />
         <option value="$PROJECT_DIR$/src/com/atypon/training/project/model/liscene/Liscene.java" />
         <option value="$PROJECT_DIR$/src/com/atypon/training/project/model/liscene/License.java" />
@@ -225,8 +204,13 @@
         <option value="$PROJECT_DIR$/src/com/atypon/training/project/common/Constants.java" />
         <option value="$PROJECT_DIR$/src/com/atypon/training/project/common/Operation.java" />
         <option value="$PROJECT_DIR$/src/com/atypon/training/project/common/ResponseStatus.java" />
-        <option value="$PROJECT_DIR$/src/com/atypon/training/project/server/controller/ServerFacade.java" />
         <option value="$PROJECT_DIR$/src/com/atypon/training/project/server/controller/ServerWorker.java" />
+        <option value="$PROJECT_DIR$/src/com/atypon/training/project/server/model/user/BaseUser.java" />
+        <option value="$PROJECT_DIR$/src/com/atypon/training/project/server/controller/identites.java" />
+        <option value="$PROJECT_DIR$/src/com/atypon/training/project/server/controller/ids.java" />
+        <option value="$PROJECT_DIR$/src/com/atypon/training/project/server/controller/Identites.java" />
+        <option value="$PROJECT_DIR$/src/com/atypon/training/project/server/controller/Identities.java" />
+        <option value="$PROJECT_DIR$/src/com/atypon/training/project/server/controller/ServerFacade.java" />
       </list>
     </option>
   </component>
@@ -294,6 +278,23 @@
             <path>
               <item name="atypon-project_1" type="b2602c69:ProjectViewProjectNode" />
               <item name="atypon-project_1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="atypon-project_1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="atypon-project_1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="atypon-project_1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="atypon-project_1" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -307,7 +308,7 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546693401365" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546699555498" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -654,23 +655,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/atypon/training/project/server/model/user/BaseUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/atypon/training/project/server/model/user/UserPrivilege.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/atypon/training/project/server/model/user/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -742,7 +726,7 @@
     <entry file="file://$PROJECT_DIR$/src/com/atypon/training/project/common/Response.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
         </state>
       </provider>
     </entry>
@@ -777,42 +761,68 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/atypon/training/project/server/controller/ServerFacade.java">
+    <entry file="file://$PROJECT_DIR$/src/com/atypon/training/project/server/controller/ServerWorker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="23" column="33" lean-forward="true" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
+        <state relative-caret-position="34">
+          <caret line="57" column="26" selection-start-line="57" selection-start-column="26" selection-end-line="57" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1387#1388#0" expanded="true" />
-            <element signature="e#1414#1415#0" expanded="true" />
-            <element signature="e#1842#1843#0" expanded="true" />
-            <element signature="e#1869#1870#0" expanded="true" />
-            <element signature="e#1934#1935#0" expanded="true" />
-            <element signature="e#1961#1962#0" expanded="true" />
-            <element signature="e#2027#2028#0" expanded="true" />
-            <element signature="e#2054#2055#0" expanded="true" />
-            <element signature="e#2212#2213#0" expanded="true" />
-            <element signature="e#2239#2240#0" expanded="true" />
-            <element signature="e#2304#2305#0" expanded="true" />
-            <element signature="e#2331#2332#0" expanded="true" />
-            <element signature="e#2397#2398#0" expanded="true" />
-            <element signature="e#2424#2425#0" expanded="true" />
-            <element signature="e#2580#2581#0" expanded="true" />
-            <element signature="e#2607#2608#0" expanded="true" />
-            <element signature="e#2672#2673#0" expanded="true" />
-            <element signature="e#2699#2700#0" expanded="true" />
-            <element signature="e#2764#2765#0" expanded="true" />
-            <element signature="e#2791#2792#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/atypon/training/project/server/controller/ServerWorker.java">
+    <entry file="file://$PROJECT_DIR$/src/com/atypon/training/project/server/controller/Identities.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-493">
-          <caret line="37" column="25" lean-forward="true" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
+        <state relative-caret-position="170">
+          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/atypon/training/project/server/controller/ServerFacade.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="586">
+          <caret line="75" column="85" selection-start-line="75" selection-start-column="85" selection-end-line="75" selection-end-column="85" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1551#1552#0" expanded="true" />
+            <element signature="e#1608#1609#0" expanded="true" />
+            <element signature="e#2926#2927#0" expanded="true" />
+            <element signature="e#2953#2954#0" expanded="true" />
+            <element signature="e#3657#3658#0" expanded="true" />
+            <element signature="e#3684#3685#0" expanded="true" />
+            <element signature="e#3749#3750#0" expanded="true" />
+            <element signature="e#3776#3777#0" expanded="true" />
+            <element signature="e#4048#4049#0" expanded="true" />
+            <element signature="e#4075#4076#0" expanded="true" />
+            <element signature="e#4140#4141#0" expanded="true" />
+            <element signature="e#4167#4168#0" expanded="true" />
+            <element signature="e#4232#4233#0" expanded="true" />
+            <element signature="e#4259#4260#0" expanded="true" />
+            <element signature="e#4533#4534#0" expanded="true" />
+            <element signature="e#4560#4561#0" expanded="true" />
+            <element signature="e#4625#4626#0" expanded="true" />
+            <element signature="e#4652#4653#0" expanded="true" />
+            <element signature="e#4717#4718#0" expanded="true" />
+            <element signature="e#4744#4745#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/atypon/training/project/server/model/user/UserPrivilege.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/atypon/training/project/server/model/user/BaseUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="43" column="5" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1179#1180#0" expanded="true" />
+            <element signature="e#1228#1229#0" expanded="true" />
           </folding>
         </state>
       </provider>

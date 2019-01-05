@@ -47,8 +47,8 @@ public abstract class BaseUser implements Comparable, Serializable, Identifiable
         return getUserId();
     }
 
-    public boolean authenticate(BaseUser user) {
-        return password.equals(user.password) && userName.equalsIgnoreCase(user.userName);
+    public boolean authenticate(String password) {
+        return password.equals(password);
     }
 
     @Override
