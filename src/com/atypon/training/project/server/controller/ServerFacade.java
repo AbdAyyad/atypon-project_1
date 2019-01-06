@@ -9,10 +9,15 @@ import com.atypon.training.project.server.model.content.BaseContent;
 import com.atypon.training.project.server.model.content.PublicationContent;
 import com.atypon.training.project.server.model.jouranl.Journal;
 import com.atypon.training.project.server.model.liscense.BaseLicense;
+import com.atypon.training.project.server.model.liscense.ContentLicense;
+import com.atypon.training.project.server.model.liscense.DateLicense;
+import com.atypon.training.project.server.model.liscense.JournalLicense;
 import com.atypon.training.project.server.model.user.*;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class ServerFacade {
     private DataBase<BaseUser> usersDataBase;
@@ -29,17 +34,16 @@ public class ServerFacade {
         identities = Identities.getInstance();
     }
 
-    private int getId(Map<String, String> params) {
-        return Integer.parseInt(params.get("id"));
-    }
 
     public Response loginUser(Map<String, String> params) {
-        Response response;
         int id = getId(params);
+        Response response;
+        BaseUser user;
+
         if (usersDataBase.contains(id)) {
-            BaseUser user = usersDataBase.get(id);
+            user = usersDataBase.get(id);
             if (user.authenticate(params.get("password"))) {
-                response = new Response("authenticate success", ResponseStatus.Success);
+                response = new Response(user.toString(), ResponseStatus.Success);
             } else {
                 response = new Response("password mismatch", ResponseStatus.UnAuthorized);
             }
@@ -49,11 +53,17 @@ public class ServerFacade {
         return response;
     }
 
+    private int getId(Map<String, String> params) {
+        return Integer.parseInt(params.get("id"));
+    }
+
     public Response getUser(Map<String, String> params) {
-        Response response;
         int id = getId(params);
+        BaseUser user;
+        Response response;
+
         if (usersDataBase.contains(id)) {
-            BaseUser user = usersDataBase.get(id);
+            user = usersDataBase.get(id);
             response = new Response(user.toString(), ResponseStatus.Success);
         } else {
             response = new Response("not found", ResponseStatus.NotFound);
@@ -146,6 +156,9 @@ public class ServerFacade {
         int id = getId(params);
         String journalName = params.get("journalName");
         LocalDate timeStamp = LocalDate.parse(params.get("timeStamp"));
+        if (!journalDataBase.contains(id)) {
+            return new Response("Journal not fount", ResponseStatus.NotFound);
+        }
         Journal journal = new Journal(id, journalName, timeStamp);
         journalDataBase.update(journal);
         return new Response("journal updated successfully", ResponseStatus.Success);
@@ -205,6 +218,9 @@ public class ServerFacade {
         if (!licenseDataBase.contains(licenseId)) {
             return new Response("license not found", ResponseStatus.NotFound);
         }
+        if (!contentDataBase.contains(id)) {
+            return new Response("publication not found", ResponseStatus.NotFound);
+        }
         license = licenseDataBase.get(licenseId);
 
         BaseContent content = new PublicationContent(id, timeStamp, journalId, authorId, title, body);
@@ -236,18 +252,93 @@ public class ServerFacade {
     }
 
     public Response createLicense(Map<String, String> params) {
-        return null;
+        int choice = Integer.parseInt(params.get("choice"));
+        BaseLicense license;
+
+        if (choice == 0) {
+            license = createContentLicense(params);
+        } else if (choice == 1) {
+            license = creteJournalLicense(params);
+        } else if (choice == 2) {
+            license = createDateLicense(params);
+        } else {
+            license = null;
+        }
+        if (license == null) {
+            return new Response("wrong choice", ResponseStatus.ServerError);
+        }
+        licenseDataBase.add(license);
+        return new Response("License created successfully", ResponseStatus.Success);
+    }
+
+    private BaseLicense createContentLicense(Map<String, String> params) {
+        int id = identities.createLicenseIdentity();
+        LocalDate timeStamp = LocalDate.now();
+        int counter = Integer.parseInt(params.get("counter"));
+        Set<Integer> set = new HashSet<>();
+        String contentId;
+        for (int i = 0; i < counter; ++i) {
+            contentId = params.get(String.valueOf(i));
+            set.add(Integer.parseInt(contentId));
+        }
+        return new ContentLicense(id, timeStamp, set);
+    }
+
+    private BaseLicense creteJournalLicense(Map<String, String> params) {
+        int id = identities.createLicenseIdentity();
+        LocalDate timeStamp = LocalDate.now();
+        int journalId = Integer.parseInt(params.get("journalId"));
+        return new JournalLicense(id, timeStamp, journalId);
+    }
+
+    private BaseLicense createDateLicense(Map<String, String> params) {
+        int id = identities.createLicenseIdentity();
+        LocalDate timeStamp = LocalDate.now();
+        LocalDate endDate = LocalDate.parse(params.get("endDate"));
+        return new DateLicense(id, timeStamp, endDate);
     }
 
     public Response updateLicense(Map<String, String> params) {
-        return null;
+        int id = getId(params);
+        LocalDate timeStamp = LocalDate.parse(params.get("timeStamp"));
+        int choice = Integer.parseInt(params.get("choice"));
+        BaseLicense license;
+
+        if (!licenseDataBase.contains(id)) {
+            return new Response("license not found", ResponseStatus.NotFound);
+        }
+
+        if (choice == 0) {
+            int counter = Integer.parseInt(params.get("counter"));
+            Set<Integer> set = new HashSet<>();
+            String contentId;
+            for (int i = 0; i < counter; ++i) {
+                contentId = params.get(String.valueOf(i));
+                set.add(Integer.parseInt(contentId));
+            }
+            license = new ContentLicense(id, timeStamp, set);
+        } else if (choice == 1) {
+            int journalId = Integer.parseInt(params.get("journalId"));
+            license = new JournalLicense(id, timeStamp, journalId);
+        } else if (choice == 2) {
+            LocalDate endDate = LocalDate.parse(params.get("endDate"));
+            license = new DateLicense(id, timeStamp, endDate);
+        } else {
+            license = null;
+        }
+
+        if (license == null) {
+            return new Response("wrong choice", ResponseStatus.ServerError);
+        }
+        licenseDataBase.update(license);
+        return new Response("License updated successfully", ResponseStatus.Success);
+
     }
 
     public Response deleteLicense(Map<String, String> params) {
         int id = getId(params);
         licenseDataBase.delete(id);
         return new Response("delete success", ResponseStatus.Success);
-
     }
 
 

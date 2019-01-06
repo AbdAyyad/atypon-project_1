@@ -54,4 +54,15 @@ public abstract class BaseContent implements Comparable, Serializable, Identifia
     public int hashCode() {
         return Objects.hash(contentId, timeStamp, journalId, authorId);
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("BaseContent{");
+        sb.append("contentId=").append(contentId);
+        sb.append(", timeStamp=").append(timeStamp);
+        sb.append(", journalId=").append(journalId);
+        sb.append(", authorId=").append(authorId);
+        sb.append('}');
+        return sb.toString();
+    }
 }

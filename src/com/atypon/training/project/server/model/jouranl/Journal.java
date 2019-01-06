@@ -57,4 +57,14 @@ public class Journal implements Serializable, Comparable, Identifiable {
     public int hashCode() {
         return Objects.hash(journalId, journalName, timeStamp);
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Journal{");
+        sb.append("journalId=").append(journalId);
+        sb.append(", journalName='").append(journalName).append('\'');
+        sb.append(", timeStamp=").append(timeStamp);
+        sb.append('}');
+        return sb.toString();
+    }
 }

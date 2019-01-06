@@ -3,6 +3,7 @@ package com.atypon.training.project.server.model.content;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.StringJoiner;
 
 public class PublicationContent extends BaseContent implements Serializable, Comparable {
     private String title;
@@ -53,5 +54,13 @@ public class PublicationContent extends BaseContent implements Serializable, Com
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), title, body);
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", PublicationContent.class.getSimpleName() + "[", "]")
+                .add("title='" + title + "'")
+                .add("body='" + body + "'")
+                .toString();
     }
 }
