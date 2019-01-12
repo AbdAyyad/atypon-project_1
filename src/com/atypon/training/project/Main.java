@@ -41,7 +41,7 @@ class ThTest extends Thread {
         set.add(1);
         set.add(2);
         set.add(3);
-        for (int i = 0; i < 3000; ++i) {
+        for (int i = 0; i < 1000; ++i) {
             if (i % 100 == 0) {
                 System.out.println(i);
                 System.out.println(Thread.currentThread());

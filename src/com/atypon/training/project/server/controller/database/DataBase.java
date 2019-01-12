@@ -56,9 +56,6 @@ public class DataBase<T extends Identifiable> {
 
     public void update(T element) {
         data.replace(element.getId(), element);
-//        if (data.containsKey(element.getId())) {
-//            data.put(element.getId(), element);
-//        }
         diskStorage.write(folder, element);
     }
 

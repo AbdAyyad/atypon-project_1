@@ -1,5 +1,9 @@
-<DateLicense>
+<ContentLicense>
   <licenseId>2411</licenseId>
   <timeStamp>2019-01-12</timeStamp>
-  <endDate>2019-01-12</endDate>
-</DateLicense>
+  <contentIdSet>
+    <int>1</int>
+    <int>2</int>
+    <int>3</int>
+  </contentIdSet>
+</ContentLicense>

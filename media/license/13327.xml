@@ -1,9 +1,5 @@
-<ContentLicense>
+<JournalLicense>
   <licenseId>13327</licenseId>
   <timeStamp>2019-01-12</timeStamp>
-  <contentIdSet>
-    <int>1</int>
-    <int>2</int>
-    <int>3</int>
-  </contentIdSet>
-</ContentLicense>
+  <journalId>0</journalId>
+</JournalLicense>
