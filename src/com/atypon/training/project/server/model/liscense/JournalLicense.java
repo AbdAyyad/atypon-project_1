@@ -5,6 +5,7 @@ import com.atypon.training.project.server.model.content.BaseContent;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.StringJoiner;
 
 public class JournalLicense extends BaseLicense implements Serializable, Comparable {
     private int journalId;
@@ -45,5 +46,14 @@ public class JournalLicense extends BaseLicense implements Serializable, Compara
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), journalId);
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", JournalLicense.class.getSimpleName() + "[", "]")
+                .add("licenseId=" + getLicenseId())
+                .add("timeStamp=" + getTimeStamp())
+                .add("journalId=" + journalId)
+                .toString();
     }
 }

@@ -3,6 +3,7 @@ package com.atypon.training.project.server.model.user;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.StringJoiner;
 
 public class Admin extends BaseUser implements Serializable,Comparable {
     private AdminPrivilege privilege;
@@ -38,5 +39,16 @@ public class Admin extends BaseUser implements Serializable,Comparable {
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), privilege);
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", Admin.class.getSimpleName() + "[", "]")
+                .add("userId=" + getUserId())
+                .add("userName=" + getUserName())
+                .add("password=" + getPassword())
+                .add("timeStamp=" + getTimeStamp())
+                .add("privilege=" + privilege)
+                .toString();
     }
 }

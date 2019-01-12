@@ -17,14 +17,6 @@ public class Journal implements Serializable, Comparable, Identifiable {
         this.timeStamp = timeStamp;
     }
 
-    public String getJournalName() {
-        return journalName;
-    }
-
-    public void setJournalName(String journalName) {
-        this.journalName = journalName;
-    }
-
     public int getJournalId() {
         return journalId;
     }

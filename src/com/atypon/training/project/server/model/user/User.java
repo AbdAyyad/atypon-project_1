@@ -3,6 +3,7 @@ package com.atypon.training.project.server.model.user;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.StringJoiner;
 
 public class User extends BaseUser implements Serializable, Comparable {
     private int licenceId;
@@ -49,5 +50,18 @@ public class User extends BaseUser implements Serializable, Comparable {
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), licenceId, privilege);
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", User.class.getSimpleName() + "[", "]")
+                .add("userId=" + getUserId())
+                .add("userName=" + getUserName())
+                .add("password=" + getPassword())
+                .add("timeStamp=" + getTimeStamp())
+                .add("licenceId=" + licenceId)
+                .add("privilege=" + privilege)
+                .toString();
+        //userId, userName, password, timeStamp
     }
 }

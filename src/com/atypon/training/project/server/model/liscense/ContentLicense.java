@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 import java.util.Set;
 import java.util.HashSet;
+import java.util.StringJoiner;
 
 public class ContentLicense extends BaseLicense implements Serializable, Comparable {
     private Set<Integer> contentIdSet;
@@ -43,5 +44,14 @@ public class ContentLicense extends BaseLicense implements Serializable, Compara
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), contentIdSet);
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", ContentLicense.class.getSimpleName() + "[", "]")
+                .add("licenseId=" + getLicenseId())
+                .add("timeStamp=" + getTimeStamp())
+                .add("contentIdSet=" + contentIdSet)
+                .toString();
     }
 }

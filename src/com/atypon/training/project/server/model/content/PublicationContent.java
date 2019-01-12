@@ -15,23 +15,7 @@ public class PublicationContent extends BaseContent implements Serializable, Com
         this.body = body;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getBody() {
-        return body;
-    }
-
-    public void setBody(String body) {
-        this.body = body;
-    }
-
-    public int getId(){
+    public int getId() {
         return getContentId();
     }
 
@@ -59,6 +43,10 @@ public class PublicationContent extends BaseContent implements Serializable, Com
     @Override
     public String toString() {
         return new StringJoiner(", ", PublicationContent.class.getSimpleName() + "[", "]")
+                .add("contentId=" + getContentId())
+                .add("journalId=" + getJournalId())
+                .add("authorId=" + getAuthorId())
+                .add("timeStamp=" + getTimeStamp())
                 .add("title='" + title + "'")
                 .add("body='" + body + "'")
                 .toString();

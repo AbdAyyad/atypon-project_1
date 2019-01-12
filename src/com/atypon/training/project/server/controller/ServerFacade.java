@@ -24,14 +24,14 @@ public class ServerFacade {
     private DataBase<BaseContent> contentDataBase;
     private DataBase<BaseLicense> licenseDataBase;
     private DataBase<Journal> journalDataBase;
-    private Identities identities;
+    private IdGenerator idGenerator;
 
     public ServerFacade() {
         usersDataBase = DataBaseFactory.getUserDataBaseInstance(Constants.USERS_FOLDER);
         contentDataBase = DataBaseFactory.getContentDataBaseInstance(Constants.CONTENTS_FOLDER);
         licenseDataBase = DataBaseFactory.getLicenseDataBaseInstance(Constants.LICENSES_FOLDER);
         journalDataBase = DataBaseFactory.getJournalDataBaseInstance(Constants.JOURNALS_FOLDER);
-        identities = Identities.getInstance();
+        idGenerator = IdGenerator.getInstance();
     }
 
 
@@ -80,11 +80,11 @@ public class ServerFacade {
             user = createAdmin(params);
         }
         usersDataBase.add(user);
-        return new Response("user/admin created successfully", ResponseStatus.Success);
+        return new Response(user.toString(), ResponseStatus.Success);
     }
 
     private User createNormalUser(Map<String, String> params) {
-        int userId = identities.createUserIdentity();
+        int userId = idGenerator.createUserIdentity();
         String userName = params.get("userName");
         String password = params.get("password");
         LocalDate timeStamp = LocalDate.now();
@@ -93,7 +93,7 @@ public class ServerFacade {
     }
 
     private Admin createAdmin(Map<String, String> params) {
-        int userId = identities.createUserIdentity();
+        int userId = idGenerator.createUserIdentity();
         String userName = params.get("userName");
         String password = params.get("password");
         LocalDate timeStamp = LocalDate.now();
@@ -122,7 +122,7 @@ public class ServerFacade {
             user = new Admin(id, userName, password, timeStamp, AdminPrivilege.getPrivilege(adminPrivilege));
         }
         usersDataBase.update(user);
-        return new Response("user/admin updated successfully", ResponseStatus.Success);
+        return new Response(user.toString(), ResponseStatus.Success);
     }
 
     public Response deleteUser(Map<String, String> params) {
@@ -144,12 +144,12 @@ public class ServerFacade {
     }
 
     public Response createJournal(Map<String, String> params) {
-        int id = identities.createJournalIdentity();
+        int id = idGenerator.createJournalIdentity();
         String journalName = params.get("journalName");
         LocalDate timeStamp = LocalDate.now();
         Journal journal = new Journal(id, journalName, timeStamp);
         journalDataBase.add(journal);
-        return new Response("journal created successfully", ResponseStatus.Success);
+        return new Response(journal.toString(), ResponseStatus.Success);
     }
 
     public Response updateJournal(Map<String, String> params) {
@@ -161,7 +161,7 @@ public class ServerFacade {
         }
         Journal journal = new Journal(id, journalName, timeStamp);
         journalDataBase.update(journal);
-        return new Response("journal updated successfully", ResponseStatus.Success);
+        return new Response(journal.toString(), ResponseStatus.Success);
     }
 
     public Response deleteJournal(Map<String, String> params) {
@@ -194,7 +194,7 @@ public class ServerFacade {
     }
 
     public Response createContent(Map<String, String> params) {
-        int id = identities.createContentIdentity();
+        int id = idGenerator.createContentIdentity();
         int authorId = Integer.parseInt(params.get("authorId"));
         int journalId = Integer.parseInt(params.get("journalId"));
         String title = params.get("title");
@@ -202,7 +202,7 @@ public class ServerFacade {
         LocalDate timeStamp = LocalDate.now();
         BaseContent content = new PublicationContent(id, timeStamp, journalId, authorId, title, body);
         contentDataBase.add(content);
-        return new Response("publication created successfully", ResponseStatus.Success);
+        return new Response(content.toString(), ResponseStatus.Success);
     }
 
     public Response updateContent(Map<String, String> params) {
@@ -229,7 +229,7 @@ public class ServerFacade {
         }
 
         contentDataBase.update(content);
-        return new Response("publication updated successfully", ResponseStatus.Success);
+        return new Response(content.toString(), ResponseStatus.Success);
     }
 
     public Response deleteContent(Map<String, String> params) {
@@ -268,11 +268,11 @@ public class ServerFacade {
             return new Response("wrong choice", ResponseStatus.ServerError);
         }
         licenseDataBase.add(license);
-        return new Response("License created successfully", ResponseStatus.Success);
+        return new Response(license.toString(), ResponseStatus.Success);
     }
 
     private BaseLicense createContentLicense(Map<String, String> params) {
-        int id = identities.createLicenseIdentity();
+        int id = idGenerator.createLicenseIdentity();
         LocalDate timeStamp = LocalDate.now();
         int counter = Integer.parseInt(params.get("counter"));
         Set<Integer> set = new HashSet<>();
@@ -285,14 +285,14 @@ public class ServerFacade {
     }
 
     private BaseLicense creteJournalLicense(Map<String, String> params) {
-        int id = identities.createLicenseIdentity();
+        int id = idGenerator.createLicenseIdentity();
         LocalDate timeStamp = LocalDate.now();
         int journalId = Integer.parseInt(params.get("journalId"));
         return new JournalLicense(id, timeStamp, journalId);
     }
 
     private BaseLicense createDateLicense(Map<String, String> params) {
-        int id = identities.createLicenseIdentity();
+        int id = idGenerator.createLicenseIdentity();
         LocalDate timeStamp = LocalDate.now();
         LocalDate endDate = LocalDate.parse(params.get("endDate"));
         return new DateLicense(id, timeStamp, endDate);
@@ -331,8 +331,7 @@ public class ServerFacade {
             return new Response("wrong choice", ResponseStatus.ServerError);
         }
         licenseDataBase.update(license);
-        return new Response("License updated successfully", ResponseStatus.Success);
-
+        return new Response(license.toString(), ResponseStatus.Success);
     }
 
     public Response deleteLicense(Map<String, String> params) {

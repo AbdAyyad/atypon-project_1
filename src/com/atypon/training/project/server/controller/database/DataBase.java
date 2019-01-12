@@ -2,41 +2,47 @@ package com.atypon.training.project.server.controller.database;
 
 import com.atypon.training.project.server.model.Identifiable;
 
-import java.util.*;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class DataBase<T extends Identifiable> {
-    private Map<Integer, T> data;
-    private Queue<Integer> identities;
+    private ConcurrentHashMap<Integer, T> data;
+    private BlockingQueue<Integer> identities;
     private int maxNumberOfElements;
     private DiskStorage diskStorage;
     private String folder;
 
     protected DataBase(int maxNumberOfElements, String folder) {
         this.maxNumberOfElements = maxNumberOfElements;
-        data = new HashMap<>();
-        identities = new LinkedList<>();
+        data = new ConcurrentHashMap<>();
+        identities = new LinkedBlockingQueue<>();
         diskStorage = DiskStorage.getInstance();
         this.folder = folder;
     }
 
 
     public void add(T element) {
-        if (data.size() >= maxNumberOfElements) {
-            removeFromCache();
-        }
         addCache(element);
-    }
-
-    private void removeFromCache() {
-        int id = identities.poll();
-        diskStorage.write(folder, data.get(id));
-        data.remove(id);
+        diskStorage.write(folder, element);
     }
 
     private void addCache(T element) {
+        if (data.size() >= maxNumberOfElements) {
+            removeFromCache();
+        }
         data.put(element.getId(), element);
         identities.add(element.getId());
     }
+
+    private void removeFromCache() {
+        try {
+            int id = identities.take();
+            data.remove(id);
+        } catch (Exception e) {
+        }
+    }
+
 
     public T get(int id) {
         if (data.containsKey(id)) {
@@ -44,16 +50,16 @@ public class DataBase<T extends Identifiable> {
         }
 
         T element = (T) diskStorage.read(folder, id);
-        add(element);
+        addCache(element);
         return element;
     }
 
     public void update(T element) {
-        if (data.containsKey(element.getId())) {
-            data.put(element.getId(), element);
-        } else {
-            diskStorage.write(folder, element);
-        }
+        data.replace(element.getId(), element);
+//        if (data.containsKey(element.getId())) {
+//            data.put(element.getId(), element);
+//        }
+        diskStorage.write(folder, element);
     }
 
     public void delete(int id) {

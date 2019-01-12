@@ -5,8 +5,9 @@ import com.atypon.training.project.server.model.content.BaseContent;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.StringJoiner;
 
-public class DateLicense extends BaseLicense implements Serializable,Comparable {
+public class DateLicense extends BaseLicense implements Serializable, Comparable {
     private LocalDate endDate;
 
     public DateLicense(int licenseId, LocalDate timeStamp, LocalDate endDate) {
@@ -46,5 +47,14 @@ public class DateLicense extends BaseLicense implements Serializable,Comparable 
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), endDate);
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", DateLicense.class.getSimpleName() + "[", "]")
+                .add("licenseId=" + getLicenseId())
+                .add("timeStamp=" + getTimeStamp())
+                .add("endDate=" + endDate)
+                .toString();
     }
 }

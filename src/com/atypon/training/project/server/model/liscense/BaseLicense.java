@@ -20,10 +20,6 @@ public abstract class BaseLicense implements Serializable, Comparable, Identifia
         return licenseId;
     }
 
-    public void setLicenseId(int licenseId) {
-        this.licenseId = licenseId;
-    }
-
     public LocalDate getTimeStamp() {
         return timeStamp;
     }
