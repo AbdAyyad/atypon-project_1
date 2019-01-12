@@ -57,26 +57,26 @@ public class IdGenerator {
     }
 
     public int createUserIdentity() {
-        int id = userId.getAndAdd(1);
+        int id = userId.getAndIncrement();
         updateFile();
         return id;
     }
 
     public int createLicenseIdentity() {
-        int id = licenseId.getAndAdd(1);
+        int id = licenseId.getAndIncrement();
 
         updateFile();
         return id;
     }
 
     public int createJournalIdentity() {
-        int id = licenseId.getAndAdd(1);
+        int id = licenseId.getAndIncrement();
         updateFile();
         return id;
     }
 
     public int createContentIdentity() {
-        int id = contentId.getAndAdd(1);
+        int id = contentId.getAndIncrement();
         updateFile();
         return id;
     }
