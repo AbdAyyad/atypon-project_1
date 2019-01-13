@@ -134,7 +134,6 @@ public class ServerFacade {
         return new Response("delete success", ResponseStatus.Success);
     }
 
-
     public Response getJournal(Map<String, String> params) {
         Response response;
         int id = getId(params);

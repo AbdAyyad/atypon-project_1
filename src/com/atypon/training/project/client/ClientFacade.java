@@ -20,9 +20,10 @@ public class ClientFacade {
         Map<String, String> params = new HashMap<>();
         Response response;
         int choice;
+        int privilege;
         String name;
         String password;
-        int privilege;
+
         System.out.print("0 for user 1 for Admin :");
         choice = sc.nextInt();
         params.put("choice", String.valueOf(choice));
@@ -40,6 +41,7 @@ public class ClientFacade {
         } else if (choice == 1) {
             params.put("adminPrivilege", String.valueOf(privilege));
         }
+
         response = SocketConnection.sendRequestAndReceiveResponse(new Request(Operation.CreateUser, params));
         System.out.println(response.getBody());
     }
@@ -49,10 +51,10 @@ public class ClientFacade {
         Response response;
         int choice;
         int id;
-        String name;
-        String password;
         int privilege;
         int licenseId;
+        String name;
+        String password;
         LocalDate timeStamp;
 
         System.out.print("0 for user 1 for Admin :");
@@ -93,8 +95,10 @@ public class ClientFacade {
     public void getUser() {
         Map<String, String> params = new HashMap<>();
         Response response;
+
         System.out.print("id :");
         params.put("id", sc.next());
+
         response = SocketConnection.sendRequestAndReceiveResponse(new Request(Operation.GetUser, params));
         System.out.println(response.getBody());
     }
@@ -102,8 +106,10 @@ public class ClientFacade {
     public void deleteUser() {
         Map<String, String> params = new HashMap<>();
         Response response;
+
         System.out.print("id :");
         params.put("id", sc.next());
+
         response = SocketConnection.sendRequestAndReceiveResponse(new Request(Operation.DeleteUser, params));
         System.out.println(response.getBody());
     }
@@ -111,8 +117,10 @@ public class ClientFacade {
     public void createJournal() {
         Map<String, String> params = new HashMap<>();
         Response response;
+
         System.out.print("journal Name : ");
         params.put("journalName", sc.next());
+
         response = SocketConnection.sendRequestAndReceiveResponse(new Request(Operation.CreateJournal, params));
         System.out.println(response.getBody());
     }
@@ -120,11 +128,13 @@ public class ClientFacade {
     public void updateJournal() {
         Map<String, String> params = new HashMap<>();
         Response response;
+
         System.out.print("id :");
         params.put("id", sc.next());
         System.out.print("journal Name : ");
         params.put("journalName", sc.next());
         params.put("timeStamp", LocalDate.now().toString());
+
         response = SocketConnection.sendRequestAndReceiveResponse(new Request(Operation.UpdateJournal, params));
         System.out.println(response.getBody());
     }
@@ -132,8 +142,10 @@ public class ClientFacade {
     public void getJournal() {
         Map<String, String> params = new HashMap<>();
         Response response;
+
         System.out.print("id :");
         params.put("id", sc.next());
+
         response = SocketConnection.sendRequestAndReceiveResponse(new Request(Operation.GetJournal, params));
         System.out.println(response.getBody());
     }
@@ -143,6 +155,7 @@ public class ClientFacade {
         Response response;
         System.out.print("id :");
         params.put("id", sc.next());
+
         response = SocketConnection.sendRequestAndReceiveResponse(new Request(Operation.DeleteJournal, params));
         System.out.println(response.getBody());
     }
@@ -150,6 +163,7 @@ public class ClientFacade {
     public void createContent() {
         Map<String, String> params = new HashMap<>();
         Response response;
+
         System.out.print("title :");
         params.put("title", sc.next());
         System.out.print("body :");
@@ -206,15 +220,91 @@ public class ClientFacade {
     }
 
     public void createLicence() {
+        Map<String, String> params = new HashMap<>();
+        Response response;
+        int choice;
+        int counter;
+        int journalId;
+        String endDate;
+
+        System.out.println("0 for content license");
+        System.out.println("1 for journal license");
+        System.out.println("2 for date license");
+        choice = sc.nextInt();
+        params.put("choice", String.valueOf(choice));
+
+        if (choice == 0) {
+            System.out.print("how many contents: ");
+            counter = sc.nextInt();
+            params.put("counter", String.valueOf(counter));
+            for (int i = 0; i < counter; ++i) {
+                System.out.printf("enter content# %d: ", i);
+                params.put(String.valueOf(i), sc.next());
+            }
+        } else if (choice == 1) {
+            System.out.print("journal ID: ");
+            journalId = sc.nextInt();
+            params.put("journalId", String.valueOf(journalId));
+        } else if (choice == 2) {
+            System.out.print("end date in the following format yyyy-mm-dd: ");
+            endDate = sc.next();
+            params.put("endDate", endDate);
+        }
+
+        response = SocketConnection.sendRequestAndReceiveResponse(new Request(Operation.CreateLicense, params));
+        System.out.println(response.getBody());
     }
 
     public void updateLicence() {
+        Map<String, String> params = new HashMap<>();
+        Response response;
+        int choice;
+        int counter;
+        int journalId;
+        int id;
+        String endDate;
+        LocalDate timeStamp;
+
+        System.out.println("0 for content license");
+        System.out.println("1 for journal license");
+        System.out.println("2 for date license");
+        choice = sc.nextInt();
+        params.put("choice", String.valueOf(choice));
+
+        System.out.print("enter id: ");
+        id = sc.nextInt();
+        params.put("id", String.valueOf(id));
+
+        timeStamp = LocalDate.now();
+        params.put("timeStamp", timeStamp.toString());
+
+
+        if (choice == 0) {
+            System.out.print("how many contents: ");
+            counter = sc.nextInt();
+            params.put("counter", String.valueOf(counter));
+            for (int i = 0; i < counter; ++i) {
+                System.out.printf("enter content# %d: ", i);
+                params.put(String.valueOf(i), sc.next());
+            }
+        } else if (choice == 1) {
+            System.out.print("journal ID: ");
+            journalId = sc.nextInt();
+            params.put("journalId", String.valueOf(journalId));
+        } else if (choice == 2) {
+            System.out.print("end date in the following format yyyy-mm-dd: ");
+            endDate = sc.next();
+            params.put("endDate", endDate);
+        }
+
+        response = SocketConnection.sendRequestAndReceiveResponse(new Request(Operation.UpdateLicense, params));
+        System.out.println(response.getBody());
     }
 
     public void getLicence() {
         Map<String, String> params = new HashMap<>();
         Response response;
-        System.out.print("id :");
+        System.out.print("id : ");
         params.put("id", sc.next());
         response = SocketConnection.sendRequestAndReceiveResponse(new Request(Operation.GetLicense, params));
         System.out.println(response.getBody());
@@ -223,7 +313,7 @@ public class ClientFacade {
     public void deleteLicence() {
         Map<String, String> params = new HashMap<>();
         Response response;
-        System.out.print("id :");
+        System.out.print("id : ");
         params.put("id", sc.next());
         response = SocketConnection.sendRequestAndReceiveResponse(new Request(Operation.DeleteLicense, params));
         System.out.println(response.getBody());

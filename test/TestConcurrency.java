@@ -1,5 +1,3 @@
-package com.atypon.training.project;
-
 import com.atypon.training.project.common.Constants;
 import com.atypon.training.project.server.controller.IdGenerator;
 import com.atypon.training.project.server.controller.database.DataBase;
@@ -16,7 +14,7 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Main {
+public class TestConcurrency {
     public static void main(String[] args) {
         Admin admin = new Admin(1, "a", "a", LocalDate.now(), AdminPrivilege.BasePrivilege);
         DataBase<BaseUser> dataBase = DataBaseFactory.getUserDataBaseInstance(Constants.USERS_FOLDER);
@@ -42,25 +40,21 @@ class ThTest extends Thread {
         set.add(1);
         set.add(2);
         set.add(3);
-        for (int i = 0; i < 1; ++i) {
+        for (int i = 0; i < 10000; ++i) {
             if (i % 100 == 0) {
                 System.out.println(i);
                 System.out.println(Thread.currentThread());
             }
             BaseLicense license = new DateLicense(idGenerator.createLicenseIdentity(), timeStamp, end);
-//            System.out.println(license);
             licenseDataBase.add(license);
 
             license = new ContentLicense(idGenerator.createLicenseIdentity(), timeStamp, set);
-//            System.out.println(license);
             licenseDataBase.add(license);
 
             license = new JournalLicense(idGenerator.createLicenseIdentity(), timeStamp, 0);
-//            System.out.println(license);
             licenseDataBase.add(license);
 
             BaseContent content = new PublicationContent(idGenerator.createContentIdentity(), timeStamp, 0, 0, "title", "body");
-//            System.out.println(content);
             contentDataBase.add(content);
         }
     }
