@@ -1,8 +1,8 @@
 <User>
   <userId>20</userId>
-  <userName>ahmad</userName>
+  <userName>a</userName>
   <password>a</password>
-  <timeStamp>2019-01-12</timeStamp>
-  <licenceId>0</licenceId>
-  <privilege>BasePrivilege</privilege>
+  <timeStamp>2019-01-13</timeStamp>
+  <licenceId>5</licenceId>
+  <privilege>ModifyContentPrivilege</privilege>
 </User>

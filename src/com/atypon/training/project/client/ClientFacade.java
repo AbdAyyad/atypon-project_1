@@ -19,13 +19,75 @@ public class ClientFacade {
     public void createUser() {
         Map<String, String> params = new HashMap<>();
         Response response;
+        int choice;
+        String name;
+        String password;
+        int privilege;
         System.out.print("0 for user 1 for Admin :");
-        params.put("choice", sc.next());
+        choice = sc.nextInt();
+        params.put("choice", String.valueOf(choice));
+        System.out.print("enter name: ");
+        name = sc.next();
+        params.put("userName", name);
+        System.out.print("enter password: ");
+        password = sc.next();
+        params.put("password", password);
+        System.out.println("0 for Base Privilege");
+        System.out.println("1 for Premium Privilege");
+        privilege = sc.nextInt();
+        if (choice == 0) {
+            params.put("userPrivilege", String.valueOf(privilege));
+        } else if (choice == 1) {
+            params.put("adminPrivilege", String.valueOf(privilege));
+        }
         response = SocketConnection.sendRequestAndReceiveResponse(new Request(Operation.CreateUser, params));
         System.out.println(response.getBody());
     }
 
     public void updateUser() {
+        Map<String, String> params = new HashMap<>();
+        Response response;
+        int choice;
+        int id;
+        String name;
+        String password;
+        int privilege;
+        int licenseId;
+        LocalDate timeStamp;
+
+        System.out.print("0 for user 1 for Admin :");
+        choice = sc.nextInt();
+        params.put("choice", String.valueOf(choice));
+
+        System.out.print("enter id: ");
+        id = sc.nextInt();
+        params.put("id", String.valueOf(id));
+
+        System.out.print("enter name: ");
+        name = sc.next();
+        params.put("userName", name);
+
+        System.out.print("enter password: ");
+        password = sc.next();
+        params.put("password", password);
+
+        timeStamp = LocalDate.now();
+        params.put("timeStamp", timeStamp.toString());
+
+        System.out.println("0 for Base Privilege");
+        System.out.println("1 for Premium Privilege");
+        privilege = sc.nextInt();
+        if (choice == 0) {
+            params.put("userPrivilege", String.valueOf(privilege));
+            System.out.print("enter license id: ");
+            licenseId = sc.nextInt();
+            params.put("licenseId", String.valueOf(licenseId));
+        } else if (choice == 1) {
+            params.put("adminPrivilege", String.valueOf(privilege));
+        }
+
+        response = SocketConnection.sendRequestAndReceiveResponse(new Request(Operation.UpdateUser, params));
+        System.out.println(response.getBody());
     }
 
     public void getUser() {
