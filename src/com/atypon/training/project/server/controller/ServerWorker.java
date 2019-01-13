@@ -23,6 +23,7 @@ public class ServerWorker implements Runnable {
         try {
             initializeConnectionWithException(socket);
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

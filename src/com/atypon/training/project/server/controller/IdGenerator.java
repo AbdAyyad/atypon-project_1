@@ -48,7 +48,7 @@ public class IdGenerator {
         }
     }
 
-    private void updateFileWithException(PrintWriter printWriter) throws Exception {
+    private void updateFileWithException(PrintWriter printWriter) {
         printWriter.println(userId);
         printWriter.println(licenseId);
         printWriter.println(journalId);
@@ -64,7 +64,6 @@ public class IdGenerator {
 
     public int createLicenseIdentity() {
         int id = licenseId.getAndIncrement();
-
         updateFile();
         return id;
     }

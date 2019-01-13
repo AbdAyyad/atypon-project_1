@@ -1,8 +1,9 @@
 package com.atypon.training.project.common;
 
+import java.io.Serializable;
 import java.util.Map;
 
-public final class Request {
+public final class Request implements Serializable {
     private Operation operation;
     private Map<String,String> params;
 

@@ -1,6 +1,8 @@
 package com.atypon.training.project.common;
 
-public final class Response {
+import java.io.Serializable;
+
+public final class Response implements Serializable {
     private String body;
     private ResponseStatus status;
 

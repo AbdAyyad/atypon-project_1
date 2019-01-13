@@ -40,7 +40,7 @@ public abstract class BaseUser implements Comparable, Serializable, Identifiable
     }
 
     public boolean authenticate(String password) {
-        return password.equals(password);
+        return getPassword().equals(password);
     }
 
     @Override

@@ -92,7 +92,7 @@ public class DiskStorage {
     }
 
     public boolean contains(String folder, int id) {
-        String fileName = String.valueOf(id) + ".xml";
+        String fileName = id + ".xml";
         Path file = Paths.get(folder, fileName);
         return Files.exists(file);
     }

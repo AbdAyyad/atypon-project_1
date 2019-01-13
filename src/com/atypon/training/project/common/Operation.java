@@ -1,6 +1,8 @@
 package com.atypon.training.project.common;
 
-public enum Operation {
+import java.io.Serializable;
+
+public enum Operation implements Serializable {
     CreateUser, UpdateUser, DeleteUser, GetUser, LoginUser,
     CreateJournal, UpdateJournal, DeleteJournal, GetJournal,
     CreateContent, UpdateContent, DeleteContent, GetContent,

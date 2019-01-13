@@ -10,9 +10,7 @@ import com.atypon.training.project.server.model.liscense.BaseLicense;
 import com.atypon.training.project.server.model.liscense.ContentLicense;
 import com.atypon.training.project.server.model.liscense.DateLicense;
 import com.atypon.training.project.server.model.liscense.JournalLicense;
-import com.atypon.training.project.server.model.user.BaseUser;
-import com.atypon.training.project.server.model.user.User;
-import com.atypon.training.project.server.model.user.UserPrivilege;
+import com.atypon.training.project.server.model.user.*;
 
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -20,6 +18,9 @@ import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
+        Admin admin = new Admin(1, "a", "a", LocalDate.now(), AdminPrivilege.BasePrivilege);
+        DataBase<BaseUser> dataBase = DataBaseFactory.getUserDataBaseInstance(Constants.USERS_FOLDER);
+        dataBase.add(admin);
         Thread[] arr = new Thread[5];
         for (int i = 0; i < 5; ++i) {
             arr[i] = new ThTest();
@@ -41,7 +42,7 @@ class ThTest extends Thread {
         set.add(1);
         set.add(2);
         set.add(3);
-        for (int i = 0; i < 1000; ++i) {
+        for (int i = 0; i < 1; ++i) {
             if (i % 100 == 0) {
                 System.out.println(i);
                 System.out.println(Thread.currentThread());

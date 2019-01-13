@@ -22,11 +22,13 @@ public class DataBase<T extends Identifiable> {
     }
 
 
+    // this method add an element to database
     public void add(T element) {
         addCache(element);
         diskStorage.write(folder, element);
     }
 
+    // this method handle the adding cache
     private void addCache(T element) {
         if (data.size() >= maxNumberOfElements) {
             removeFromCache();
@@ -42,7 +44,6 @@ public class DataBase<T extends Identifiable> {
         } catch (Exception e) {
         }
     }
-
 
     public T get(int id) {
         if (data.containsKey(id)) {

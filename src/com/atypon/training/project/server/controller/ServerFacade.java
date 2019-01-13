@@ -43,7 +43,11 @@ public class ServerFacade {
         if (usersDataBase.contains(id)) {
             user = usersDataBase.get(id);
             if (user.authenticate(params.get("password"))) {
-                response = new Response(user.toString(), ResponseStatus.Success);
+                if (user instanceof Admin) {
+                    response = new Response("Admin", ResponseStatus.Success);
+                } else {
+                    response = new Response("User", ResponseStatus.Success);
+                }
             } else {
                 response = new Response("password mismatch", ResponseStatus.UnAuthorized);
             }
@@ -101,7 +105,6 @@ public class ServerFacade {
         return new Admin(userId, userName, password, timeStamp, AdminPrivilege.getPrivilege(adminPrivilege));
     }
 
-
     public Response updateUser(Map<String, String> params) {
         int choice = Integer.parseInt(params.get("choice"));
         int id = getId(params);
@@ -130,6 +133,7 @@ public class ServerFacade {
         usersDataBase.delete(id);
         return new Response("delete success", ResponseStatus.Success);
     }
+
 
     public Response getJournal(Map<String, String> params) {
         Response response;
