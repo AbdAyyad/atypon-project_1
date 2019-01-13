@@ -44,9 +44,9 @@ public class ServerFacade {
             user = usersDataBase.get(id);
             if (user.authenticate(params.get("password"))) {
                 if (user instanceof Admin) {
-                    response = new Response("Admin", ResponseStatus.Success);
+                    response = new Response("Admin\n" + user.toString(), ResponseStatus.Success);
                 } else {
-                    response = new Response("User", ResponseStatus.Success);
+                    response = new Response("User\n" + user.toString(), ResponseStatus.Success);
                 }
             } else {
                 response = new Response("password mismatch", ResponseStatus.UnAuthorized);
@@ -177,7 +177,7 @@ public class ServerFacade {
     public Response getContent(Map<String, String> params) {
         Response response;
         int id = getId(params);
-        int licenseId = Integer.parseInt("licenseId");
+        int licenseId = Integer.parseInt(params.get("licenseId"));
         BaseLicense license;
 
         if (!licenseDataBase.contains(licenseId)) {

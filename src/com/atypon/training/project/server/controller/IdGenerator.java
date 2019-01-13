@@ -69,7 +69,7 @@ public class IdGenerator {
     }
 
     public int createJournalIdentity() {
-        int id = licenseId.getAndIncrement();
+        int id = journalId.getAndIncrement();
         updateFile();
         return id;
     }

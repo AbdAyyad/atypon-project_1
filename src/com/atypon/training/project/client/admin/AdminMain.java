@@ -74,10 +74,10 @@ public class AdminMain {
                     facade.updateContent();
                     break;
                 case 11:
-                    facade.updateContent();
+                    facade.getContent();
                     break;
                 case 12:
-                    facade.getContent();
+                    facade.deleteContent();
                     break;
                 case 13:
                     facade.createLicence();
